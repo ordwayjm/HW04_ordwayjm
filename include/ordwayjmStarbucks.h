@@ -11,9 +11,8 @@ class ordwayjmStarbucks: public Starbucks
 	 ~ordwayjmStarbucks(void);
 	 void build(Entry* c, int n);
 	 Entry* getNearest(double x, double y);
+	 Entry* shuffle(Entry* c, int n);
 	 void printInOrder(Node* r);
 
-	 int size;
 	 Node* root;
-	 vector<Entry*> starbucks;
 };

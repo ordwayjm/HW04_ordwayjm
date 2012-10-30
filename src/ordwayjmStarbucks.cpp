@@ -14,33 +14,48 @@ ordwayjmStarbucks::~ordwayjmStarbucks(void)
 {
 }
 
-Node* insert(Entry* e, Node* r) {
+Node* insert(Entry* e, Node* r) 
+{
 	if(r == NULL) return new Node(e);
 	if(abs(e->x - r->c->x)<= 0.00001 && abs(e->y - r->c->y)<= 0.00001) return r;
-	if(e->x < r->c->x) {
-		r->left = insert(e, r->left);
-	}
-	else {
-		r->right = insert(e, r->right);
-	}
+	if(e->x < r->c->x) r->left = insert(e, r->left);
+	else r->right = insert(e, r->right);
 	return r;
 }
 
 
 void ordwayjmStarbucks::build(Entry* c, int n)
 {
-	// shuffle c first
+	c = shuffle(c, n);
 
-	root = new Node(&c[n/2]); // create root node as median
+	root = new Node(&c[0]); // create root node as first in shuffled array
 
-	for(int i = 0; i < n; i++)
+	for(int i = 1; i < n; i++)
 	{
 		insert(&c[i], root);
 	}
 }
 
-void ordwayjmStarbucks::printInOrder(Node* r) {
+Entry* ordwayjmStarbucks::shuffle(Entry* c, int n)
+{
+   Entry temp;
+   int r;
+   int last;
+
+   for (last = n; last > 1; last--)
+   {
+      r = rand() % last;
+      temp = c[r];
+      c[r] = c[last - 1];
+      c[last - 1] = temp;
+   }
+   return c;
+}
+
+void ordwayjmStarbucks::printInOrder(Node* r) 
+{
 	if(r == NULL) return;
+	if(r == root) console() << r->c->identifier << endl;
 	printInOrder(r->left);
 	console() << r->c->identifier << endl;
 	printInOrder(r->right);
@@ -48,5 +63,9 @@ void ordwayjmStarbucks::printInOrder(Node* r) {
 
 Entry* ordwayjmStarbucks::getNearest(double x, double y)
 {
-	return 0;
+	Entry* start = new Entry();
+	start->x = x;
+	start->y = y;
+	Entry* candidate = root->search(start, root);
+	return candidate;
 }

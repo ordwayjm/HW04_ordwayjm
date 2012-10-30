@@ -28,7 +28,8 @@ void HW04_ordwayjmApp::setup()
 	readCSV("Starbucks_2006.csv");
 	ordwayjmStarbucks starbucks;
 	starbucks.build(locations, size);
-	starbucks.printInOrder(starbucks.root);
+	console() << starbucks.getNearest(0.814283,0.613506)->identifier << endl;
+	//starbucks.printInOrder(starbucks.root);
 }
 
 void HW04_ordwayjmApp::mouseDown( MouseEvent event )
