@@ -38,10 +38,27 @@
     <ClInclude Include="..\include\Starbucks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Census.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resources\usa-map.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\Starbucks_2006.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\Census_2010.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\resources\Census_2000.csv">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
